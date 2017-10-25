@@ -12,7 +12,7 @@ Allows you to create and display banners in WordPress.
 
 == Description ==
 
-Basic Banner is a plugin that allows you to create and display banners in WordPress. All Banners are stored as custom post type.
+Basic Banner is a plugin that allows you to create and display banners in WordPress. This plugin creates custom post type called banner to store all the banners.
 
 = Displaying the Banner =
 
@@ -20,7 +20,7 @@ You can display the banner anywhere in your theme by calling this function :
 
 `<?php basic_banner_show( $name ); ?>`
 
-To get the banner object call this function instead :
+Please note that `$name` is the banner slug. To get the banner object, you can use this function :
 
 `<?php $banner = basic_banner_get( $name ); ?>`
 
