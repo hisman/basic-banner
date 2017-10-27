@@ -19,13 +19,13 @@ if ( ! $banner ) {
 
 	<?php if ( $banner->url ) : ?>
 
-		<a href="<?php echo $banner->url; ?>" title="<?php echo $banner->caption; ?>">
-			<?php echo get_the_post_thumbnail( $banner->id, 'full', array( 'alt' => $banner->caption ) ); ?>
+		<a href="<?php echo esc_url( $banner->url ); ?>" title="<?php echo esc_attr( $banner->caption ); ?>">
+			<?php echo get_the_post_thumbnail( $banner->id, 'full', array( 'alt' => esc_attr( $banner->caption ) ) ); ?>
 		</a>
 
 	<?php else : ?>
 
-		<?php echo get_the_post_thumbnail( $banner->id, 'full', array( 'alt' => $banner->caption ) );  ?>
+		<?php echo get_the_post_thumbnail( $banner->id, 'full', array( 'alt' => esc_attr( $banner->caption ) ) );  ?>
 
 	<?php endif ?>
 

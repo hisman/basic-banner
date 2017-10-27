@@ -105,7 +105,7 @@ class Basic_Banner {
 		$banner_url = $custom_fields['banner_url'][0];
 		?>
 
-		<p><input type="text" style="width: 100%" rows="3" name="banner_url" value="<?php echo $banner_url; ?>"></p>
+		<p><input type="text" style="width: 100%" name="banner_url" value="<?php echo esc_url( $banner_url ); ?>"></p>
 
 		<?php
 	}
@@ -122,7 +122,7 @@ class Basic_Banner {
 		$banner_caption = $custom_fields['banner_caption'][0];
 		?>
 
-		<p><input type="text" style="width: 100%" rows="3" name="banner_caption" value="<?php echo $banner_caption; ?>"></p>
+		<p><input type="text" style="width: 100%" name="banner_caption" value="<?php echo esc_attr( $banner_caption ); ?>"></p>
 
 		<?php
 	}
@@ -156,12 +156,12 @@ class Basic_Banner {
 		}
 
 		if ( isset( $_POST['banner_url'] ) ) {
-			$banner_url = $_POST['banner_url'];
+			$banner_url = esc_url_raw( $_POST['banner_url'] );
 			update_post_meta( $post_id, 'banner_url', $banner_url );
 		}
 
 		if ( isset( $_POST['banner_caption'] ) ) {
-			$banner_caption = $_POST['banner_caption'];
+			$banner_caption = sanitize_text_field( $_POST['banner_caption'] );
 			update_post_meta( $post_id, 'banner_caption', $banner_caption );
 		}
 	}
