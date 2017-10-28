@@ -1,4 +1,8 @@
-# Basic Banner
+# [Basic Banner](https://wordpress.org/plugins/basic-banner/)
+
+[![Plugin version](https://img.shields.io/wordpress/plugin/v/basic-banner.svg)](https://wordpress.org/plugins/basic-banner/)
+[![WordPress Compatibility](https://img.shields.io/wordpress/v/basic-banner.svg)](https://wordpress.org/plugins/basic-banner/)
+[![license](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/hisman/basic-banner/blob/master/LICENSE.txt)
 
 Basic Banner is a WordPress plugin that allows you to create and display banners in WordPress. This plugin creates custom post type called banner to store all the banners.
 
