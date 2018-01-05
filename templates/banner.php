@@ -15,7 +15,7 @@ if ( ! $banner ) {
 }
 ?>
 
-<div id="basic-banner-<?php echo $banner->id ?>" class="basic-banner">
+<div id="basic-banner-<?php echo $banner->id; ?>" class="basic-banner <?php echo esc_attr( $classes ); ?>">
 
 	<?php if ( $banner->url ) : ?>
 

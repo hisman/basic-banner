@@ -20,7 +20,9 @@ You can display the banner anywhere in your theme by calling this function :
 
 `<?php basic_banner_show( $name ); ?>`
 
-Please note that `$name` is the banner slug. To get the banner object, you can use this function :
+Parameter `$name` is the banner slug and `$classes` is the additional HTML classes for banner container.  
+
+To get the banner object, you can use this function :
 
 `<?php $banner = basic_banner_get( $name ); ?>`
 

@@ -52,8 +52,8 @@ function basic_banner_get( $name ) {
  *
  * @since    1.0.0
  */
-function basic_banner_show( $name ) {
+function basic_banner_show( $name, $classes = '' ) {
 	$banner = basic_banner_get( $name );
 
-	basic_banner_get_template( 'banner.php', array( 'banner' => $banner ) );
+	basic_banner_get_template( 'banner.php', array( 'banner' => $banner, 'classes' => $classes ) );
 }
