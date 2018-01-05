@@ -4,7 +4,7 @@
  * Plugin Name:       Basic Banner
  * Plugin URI:        https://github.com/hisman/basic-banner
  * Description:       Allows you to create and display banners in WordPress.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Hisman
  * Author URI:        https://hisman.co
  * License:           GPL-2.0+
@@ -24,6 +24,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Basic_Banner' ) ) :
 
 class Basic_Banner {
+
+	/**
+     * Plugin version.
+     *
+     * @var string
+     */
+    public $version = '1.1.0';
 
 	/**
 	 * Basic_Banner Constructor.
@@ -49,13 +56,22 @@ class Basic_Banner {
 	 * Hook into actions and filters.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Add custom columns for banner post type.
 	 */
 	private function init_hooks() {
 		add_action( 'init', array( $this, 'custom_post_type' ) );
+
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 30 );
 		add_action( 'do_meta_boxes', array( $this, 'change_featured_image' ) );
 		add_action( 'save_post', array( $this, 'save_meta_boxes' ), 1, 2 );
+
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+
+		add_filter( 'manage_banner_posts_columns', array( $this, 'banner_columns' ) );
+		add_filter( 'manage_edit-banner_sortable_columns', array( $this, 'banner_sortable_columns' ) );
+		add_action( 'manage_banner_posts_custom_column', array( $this, 'render_banner_columns' ) );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_scripts' ) );
 	}
 
 	/**
@@ -86,7 +102,7 @@ class Basic_Banner {
 	/**
 	 * Add meta boxes.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
 	 */
 	public function add_meta_boxes() {
 		add_meta_box( 'banner_url', __( 'Banner URL', 'basic_banner' ), array( $this, 'url_meta_box' ), 'banner', 'normal', 'low' );
@@ -96,7 +112,7 @@ class Basic_Banner {
 	/**
 	 * Banner URL meta box
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
 	 */
 	public function url_meta_box() {
 		global $post;
@@ -113,7 +129,7 @@ class Basic_Banner {
 	/**
 	 * Banner Caption meta box
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
 	 */
 	public function caption_meta_box() {
 		global $post;
@@ -130,7 +146,7 @@ class Basic_Banner {
 	/**
 	 * Change featured image meta box.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
 	 */
 	public function change_featured_image() {
 		remove_meta_box( 'postimagediv', 'banner', 'side' );
@@ -140,7 +156,7 @@ class Basic_Banner {
 	/**
 	 * Save meta boxes.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
 	 */
 	public function save_meta_boxes( $post_id, $post ) {
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
@@ -169,10 +185,86 @@ class Basic_Banner {
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    1.0.0
+	 * @since  1.0.0
 	 */
 	public function load_plugin_textdomain() {
 		load_plugin_textdomain( 'basic-banner', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
+
+	/**
+	 * Define custom columns for banner.
+	 *
+	 * @since  1.1.0
+	 */
+	public function banner_columns( $existing_columns ) {
+		$columns = array(
+			'cb' => '<input type="checkbox" />',
+			'thumb' => '<span class="dashicons-before dashicons-format-image basic-banner-icon"></span>',
+			'title' => __( 'Title', 'basic_banner' ),
+			'name' => __( 'Name', 'basic_banner' ),
+		);
+
+		return array_merge( $columns, $existing_columns );
+	}
+
+	/**
+	 * Make custom columns for banner sortable
+	 *
+	 * @since  1.1.0
+	 */
+	public function banner_sortable_columns( $columns ) {
+		$custom = array(
+			'name' => 'post_name',
+		);
+		return wp_parse_args( $custom, $columns );
+	}
+
+	/**
+	 * Output custom columns for banner.
+	 *
+	 * @since  1.1.0
+	 */
+	public function render_banner_columns( $column ) {
+		global $post;
+
+		switch ( $column ) {
+			case 'thumb' :
+				echo '<a href="' . get_edit_post_link( $post->ID ) . '">' . get_the_post_thumbnail( $post->ID, 'thumbnail' ) . '</a>';
+				break;
+			case 'name' :
+				echo $post->post_name;
+				break;
+		}
+	}
+
+	/**
+     * Get the plugin url.
+     *
+     * @since 1.1.0
+     */
+    public function plugin_url(){
+        return untrailingslashit( plugins_url( '/', __FILE__ ) );
+    }
+
+	/**
+     * Load admin scripts.
+     *
+     * @since 1.1.0
+     */
+    public function load_admin_scripts() {
+		$screen = get_current_screen();
+		$screen_id = $screen ? $screen->id : '';
+
+		$banner_screens = array(
+			'banner',
+			'edit-banner',
+		);
+
+		wp_register_style( 'basic_banner_admin_styles', $this->plugin_url()  . '/assets/css/admin.css', array(), $this->version );
+
+		if ( in_array( $screen_id, $banner_screens ) ) {
+			wp_enqueue_style( 'basic_banner_admin_styles' );
+		}
 	}
 
 }
