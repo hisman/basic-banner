@@ -49,6 +49,7 @@ class Basic_Banner {
 	 */
 	private function includes() {
 		include_once( 'includes/class-basic-banner-model.php' );
+		include_once( 'includes/class-basic-banner-widget.php' );
 		include_once( 'includes/basic-banner-functions.php' );
 	}
 
@@ -56,7 +57,7 @@ class Basic_Banner {
 	 * Hook into actions and filters.
 	 *
 	 * @since 1.0.0
-	 * @since 1.1.0 Add custom columns for banner post type.
+	 * @since 1.1.0 Add custom columns for banner, register widget.
 	 */
 	private function init_hooks() {
 		add_action( 'init', array( $this, 'custom_post_type' ) );
@@ -72,6 +73,8 @@ class Basic_Banner {
 		add_action( 'manage_banner_posts_custom_column', array( $this, 'render_banner_columns' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_scripts' ) );
+
+		add_action( 'widgets_init', array( $this, 'register_widget' ) );
 	}
 
 	/**
@@ -265,6 +268,15 @@ class Basic_Banner {
 		if ( in_array( $screen_id, $banner_screens ) ) {
 			wp_enqueue_style( 'basic_banner_admin_styles' );
 		}
+	}
+
+	/**
+     * Register widget.
+     *
+     * @since 1.1.0
+     */
+    public function register_widget() {
+		register_widget( 'Basic_Banner_Widget' );
 	}
 
 }
