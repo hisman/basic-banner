@@ -1,0 +1,40 @@
+table.wp-list-table {
+	.column-name {
+		width: 20%;
+	}
+
+	.column-thumb {
+		width: 52px;
+		text-align: center;
+		white-space: nowrap;
+		line-height: 1;
+	}
+
+	td.column-thumb img {
+		margin: 0;
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		vertical-align: middle;
+	}
+
+	.basic-banner-icon:before {
+		width: 14px;
+		height: 14px;
+		font-size: 14px;
+	}
+
+	@media only screen and (max-width: 782px) {
+		.column-thumb {
+			display: none;
+		}
+
+		td.column-thumb {
+			text-align: left;
+
+			img {
+				max-width: 50px;
+			}
+		}
+	}
+}
