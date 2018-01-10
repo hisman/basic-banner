@@ -1,55 +1,86 @@
-# Copyright (C) 2017 Basic Banner
+# Copyright (C) 2018 Basic Banner
 # This file is distributed under the same license as the Basic Banner package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Basic Banner 1.0.0\n"
+"Project-Id-Version: Basic Banner 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/basic-banner\n"
-"POT-Creation-Date: 2017-10-25 05:57:49+00:00\n"
+"POT-Creation-Date: 2018-01-10 09:53:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: basic-banner.php:69
+#: basic-banner/basic-banner.php:90 basic-banner.php:90
 msgid "Banners"
 msgstr ""
 
-#: basic-banner.php:70
+#: basic-banner/basic-banner.php:91 basic-banner.php:91
 msgid "Banner"
 msgstr ""
 
-#: basic-banner.php:71
+#: basic-banner/basic-banner.php:92 basic-banner.php:92
 msgid "Add New Banner"
 msgstr ""
 
-#: basic-banner.php:72
+#: basic-banner/basic-banner.php:93 basic-banner.php:93
 msgid "Edit Banner"
 msgstr ""
 
-#: basic-banner.php:73
+#: basic-banner/basic-banner.php:94 basic-banner.php:94
 msgid "New Banner"
 msgstr ""
 
-#: basic-banner.php:74
+#: basic-banner/basic-banner.php:95 basic-banner.php:95
 msgid "All Banners"
 msgstr ""
 
-#: basic-banner.php:92
+#: basic-banner/basic-banner.php:113 basic-banner.php:113
 msgid "Banner URL"
 msgstr ""
 
-#: basic-banner.php:93
+#: basic-banner/basic-banner.php:114 basic-banner.php:114
 msgid "Banner Caption"
 msgstr ""
 
-#: basic-banner.php:137
+#: basic-banner/basic-banner.php:158 basic-banner.php:158
 msgid "Banner Image"
 msgstr ""
 
+#: basic-banner/basic-banner.php:208 basic-banner.php:208
+msgid "Title"
+msgstr ""
+
+#: basic-banner/basic-banner.php:209 basic-banner.php:209
+msgid "Name"
+msgstr ""
+
+#: basic-banner/includes/class-basic-banner-widget.php:27
+#: includes/class-basic-banner-widget.php:27
+msgid "Display a banner"
+msgstr ""
+
+#. #-#-#-#-#  basic-banner.pot (Basic Banner 1.1.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
+#: basic-banner/includes/class-basic-banner-widget.php:30
+#: includes/class-basic-banner-widget.php:30
 msgid "Basic Banner"
+msgstr ""
+
+#: basic-banner/includes/class-basic-banner-widget.php:69
+#: includes/class-basic-banner-widget.php:69
+msgid "Title:"
+msgstr ""
+
+#: basic-banner/includes/class-basic-banner-widget.php:75
+#: includes/class-basic-banner-widget.php:75
+msgid "Banner:"
+msgstr ""
+
+#: basic-banner/includes/class-basic-banner-widget.php:84
+#: includes/class-basic-banner-widget.php:84
+msgid "Please create the banner first."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
