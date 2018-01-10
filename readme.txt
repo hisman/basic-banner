@@ -4,7 +4,7 @@ Donate Link: https://www.paypal.me/hismansaputra
 Tags: banner
 Requires at least: 4.5
 Tested up to: 4.9.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,13 +16,15 @@ Basic Banner is a plugin that allows you to create and display banners in WordPr
 
 = Displaying the Banner =
 
-You can display the banner anywhere in your theme by calling this function :
+You can display the banners by using basic banner widget. There is also a shortcode :
 
-`<?php basic_banner_show( $name ); ?>`
+`[basicbanner name="" class=""]`
 
-Parameter `$name` is the banner slug and `$classes` is the additional HTML classes for banner container.  
+And a function for displaying banners anywhere in your theme :
 
-To get the banner object, you can use this function :
+`<?php basic_banner_show( $name, $class = ''); ?>`
+
+Parameter `$name` is the banner slug and `$class` is the additional HTML classes for banner container.  To get the banner object, you can use this function :
 
 `<?php $banner = basic_banner_get( $name ); ?>`
 
@@ -66,3 +68,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 = 1.0.0 =
 * Initial Version.
+
+= 1.1.0 =
+* Custom html classes for banner container.
+* Show thumbnail & name in banner list.
+* Add widget for displaying the banners.
+* Add shortcode for displaying the banners.

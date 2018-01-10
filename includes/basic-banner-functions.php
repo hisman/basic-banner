@@ -51,9 +51,10 @@ function basic_banner_get( $name ) {
  * Show banner markup.
  *
  * @since    1.0.0
+ * @since    1.1.0 Custom html classes for banner container
  */
-function basic_banner_show( $name, $classes = '' ) {
+function basic_banner_show( $name, $class = '' ) {
 	$banner = basic_banner_get( $name );
 
-	basic_banner_get_template( 'banner.php', array( 'banner' => $banner, 'classes' => $classes ) );
+	basic_banner_get_template( 'banner.php', array( 'banner' => $banner, 'class' => $class ) );
 }

@@ -8,15 +8,19 @@ Basic Banner is a WordPress plugin that allows you to create and display banners
 
 ### Displaying the Banner
 
-You can display the banner anywhere in your theme by calling this function :
+You can display the banners by using basic banner widget. There is also a shortcode :
 
-```php
-<?php basic_banner_show( $name, $classes = '' ); ?>
+```
+[basicbanner name="" class=""]
 ```
 
-Parameter `$name` is the banner slug and `$classes` is the additional HTML classes for banner container. 
+And a function for displaying banners anywhere in your theme :
 
-To get the banner object, you can use this function :
+```php
+<?php basic_banner_show( $name, $class = '' ); ?>
+```
+
+Parameter `$name` is the banner slug and `$class` is the additional HTML classes for banner container. To get the banner object, you can use this function :
 
 ```php
 <?php $banner = basic_banner_get( $name ); ?>

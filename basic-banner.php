@@ -45,12 +45,14 @@ class Basic_Banner {
 	/**
 	 * Include required core files used in admin and on the frontend.
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
+	 * @since 1.1.0 Add widget & shortcode.
 	 */
 	private function includes() {
 		include_once( 'includes/class-basic-banner-model.php' );
-		include_once( 'includes/class-basic-banner-widget.php' );
 		include_once( 'includes/basic-banner-functions.php' );
+		include_once( 'includes/class-basic-banner-widget.php' );
+		include_once( 'includes/class-basic-banner-shortcode.php' );
 	}
 
 	/**
