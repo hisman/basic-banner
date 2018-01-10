@@ -12,3 +12,8 @@ project.properties
 
 # Windows junk
 Thumbs.db
+
+# NPM
+/node_modules
+/basic-banner
+basic-banner.zip

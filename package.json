@@ -1,0 +1,29 @@
+{
+  "name": "basic-banner",
+  "version": "1.1.0",
+  "description": "Allows you to create and display banners in WordPress",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hisman/basic-banner.git"
+  },
+  "author": "Hisman",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/hisman/basic-banner/issues"
+  },
+  "homepage": "https://github.com/hisman/basic-banner#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-less": "^3.4.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-zip": "^4.1.0"
+  }
+}
