@@ -4,7 +4,7 @@ Donate Link: https://www.paypal.me/hismansaputra
 Tags: banner
 Requires at least: 4.5
 Tested up to: 4.9.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,11 +66,15 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial Version.
+= 1.1.1 =
+* Fix undefined index when creating a new banner.
+* Change banner image size in admin to full size.
 
 = 1.1.0 =
 * Custom html classes for banner container.
 * Show thumbnail & name in banner list.
 * Add widget for displaying the banners.
 * Add shortcode for displaying the banners.
+
+= 1.0.0 =
+* Initial Version.
