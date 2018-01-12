@@ -4,7 +4,7 @@
  * Plugin Name:       Basic Banner
  * Plugin URI:        https://github.com/hisman/basic-banner
  * Description:       Allows you to create and display banners in WordPress.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Hisman
  * Author URI:        https://hisman.co
  * License:           GPL-2.0+
@@ -30,7 +30,7 @@ class Basic_Banner {
      *
      * @var string
      */
-    public $version = '1.1.0';
+    public $version = '1.1.1';
 
 	/**
 	 * Basic_Banner Constructor.
@@ -118,12 +118,13 @@ class Basic_Banner {
 	 * Banner URL meta box
 	 *
 	 * @since  1.0.0
+	 * @since  1.1.1 Fix undefined index when creating a new banner.
 	 */
 	public function url_meta_box() {
 		global $post;
 
 		$custom_fields = get_post_custom( $post->ID );
-		$banner_url = $custom_fields['banner_url'][0];
+		$banner_url = ( array_key_exists( 'banner_url', $custom_fields ) ) ? $custom_fields['banner_url'][0] : '';
 		?>
 
 		<p><input type="text" style="width: 100%" name="banner_url" value="<?php echo esc_url( $banner_url ); ?>"></p>
@@ -135,12 +136,13 @@ class Basic_Banner {
 	 * Banner Caption meta box
 	 *
 	 * @since  1.0.0
+	 * @since  1.1.1 Fix undefined index when creating a new banner.
 	 */
 	public function caption_meta_box() {
 		global $post;
 
 		$custom_fields = get_post_custom( $post->ID );
-		$banner_caption = $custom_fields['banner_caption'][0];
+		$banner_caption = ( array_key_exists( 'banner_caption', $custom_fields ) ) ? $custom_fields['banner_caption'][0] : '';
 		?>
 
 		<p><input type="text" style="width: 100%" name="banner_caption" value="<?php echo esc_attr( $banner_caption ); ?>"></p>
