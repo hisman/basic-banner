@@ -60,6 +60,7 @@ class Basic_Banner {
 	 *
 	 * @since 1.0.0
 	 * @since 1.1.0 Add custom columns for banner, register widget.
+	 * @since 1.1.1 Change banner image size in admin to full size.
 	 */
 	private function init_hooks() {
 		add_action( 'init', array( $this, 'custom_post_type' ) );
@@ -77,6 +78,8 @@ class Basic_Banner {
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_scripts' ) );
 
 		add_action( 'widgets_init', array( $this, 'register_widget' ) );
+
+		add_filter( 'admin_post_thumbnail_size', array( $this, 'admin_post_thumbnail_size' ), 10, 3 );
 	}
 
 	/**
@@ -281,6 +284,17 @@ class Basic_Banner {
      */
     public function register_widget() {
 		register_widget( 'Basic_Banner_Widget' );
+	}
+
+	/**
+     * Change banner image size in admin to full size.
+     *
+     * @since 1.1.1
+     */
+    public function admin_post_thumbnail_size( $size, $thumbnail_id, $post ) {
+		$size = ( $post->post_type === 'banner' ) ? 'full' : $size;
+
+		return $size;
 	}
 
 }
