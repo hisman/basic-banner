@@ -13,7 +13,9 @@ gulp.task('deploy', function(){
     return gulp.src(['**/*',
             '!{.git,.git/**}',
             '!{.wordpress-org,.wordpress-org/**}',
-            '!{node_modules,node_modules/**}',
+			'!{node_modules,node_modules/**}',
+            '!{bin,bin/**}',
+			'!{tests,tests/**}',
             '!.editorconfig',
             '!.gitattributes',
             '!.gitignore',
@@ -21,6 +23,9 @@ gulp.task('deploy', function(){
             '!package.json',
 			'!package-lock.json',
 			'!README.md',
+			'!.phpcs.xml.dist',
+			'!.travis.yml',
+			'!phpunit.xml.dist',
 			'!{' + slug + ',' + slug + '/**}',
             '!' + slug + '.zip'])
         .pipe(gulp.dest(slug));
