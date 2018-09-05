@@ -20,6 +20,7 @@ class Basic_Banner_Model {
 	 * Construct banner object.
 	 *
 	 * @since    1.0.0
+	 * @since    1.1.2 Fix undefined property error.
 	 */
 	public function __construct( $name ) {
 		$banner_post = get_posts( array(
@@ -29,9 +30,11 @@ class Basic_Banner_Model {
 			'numberposts' => 1,
 		) );
 
+
 		if ( empty( $banner_post ) ) {
 			$this->error = true;
 		}else {
+			$this->error = false;
 			$this->post = $banner_post[0];
 			$this->id = $this->post->ID;
 			$this->name = $this->post->post_name;
