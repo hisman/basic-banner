@@ -4,7 +4,7 @@
  * Plugin Name:       Basic Banner
  * Plugin URI:        https://github.com/hisman/basic-banner
  * Description:       Allows you to create and display banners in WordPress.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            Hisman
  * Author URI:        https://hisman.co
  * License:           GPL-2.0+
@@ -30,7 +30,7 @@ class Basic_Banner {
      *
      * @var string
      */
-    public $version = '1.1.2';
+    public $version = '1.1.3';
 
 	/**
 	 * Basic_Banner Constructor.
