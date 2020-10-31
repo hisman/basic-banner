@@ -1,65 +1,74 @@
 'use strict';
 
-var slug = 'basic-banner',
-    gulp = require('gulp'),
-	plugins = require('gulp-load-plugins')();
+const slug = 'basic-banner';
+const { src, dest, series, watch } = require('gulp');
+const zip = require('gulp-zip');
+const del = require('del');
+const postcss = require('gulp-postcss');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const less = require('gulp-less');
 
-var swallowError = function(error) {
+const swallowError = function(error) {
 	console.log(error.toString());
 }
 
-/* Archiving Tasks */
-gulp.task('deploy', function(){
-    return gulp.src(['**/*',
-            '!{.git,.git/**}',
-            '!{.wordpress-org,.wordpress-org/**}',
-			'!{node_modules,node_modules/**}',
-            '!{bin,bin/**}',
-			'!{tests,tests/**}',
-            '!.editorconfig',
-            '!.gitattributes',
-            '!.gitignore',
-            '!gulpfile.js',
-            '!package.json',
-			'!package-lock.json',
-			'!README.md',
-			'!.phpcs.xml.dist',
-			'!.travis.yml',
-			'!phpunit.xml.dist',
-			'!{' + slug + ',' + slug + '/**}',
-            '!' + slug + '.zip'])
-        .pipe(gulp.dest(slug));
-});
+/* Packaging */
+function deploy() {
+	return src(['**/*',
+				'!{.git,.git/**}',
+				'!{.wordpress-org,.wordpress-org/**}',
+				'!{node_modules,node_modules/**}',
+				'!{bin,bin/**}',
+				'!{tests,tests/**}',
+				'!.editorconfig',
+				'!.gitattributes',
+				'!.gitignore',
+				'!gulpfile.js',
+				'!package.json',
+				'!package-lock.json',
+				'!README.md',
+				'!.phpcs.xml.dist',
+				'!.travis.yml',
+				'!phpunit.xml.dist',
+				'!{' + slug + ',' + slug + '/**}',
+				'!' + slug + '.zip'])
+			.pipe(dest(slug));
+}
 
-gulp.task('archive', ['deploy'], function(){
-    return gulp.src([slug + '/**/*'], { base: '.' })
-        .pipe(plugins.zip(slug + '.zip'))
-        .pipe(gulp.dest('.'));
-});
+function archive() {
+	return src([slug + '/**/*'], { base: '.' })
+		.pipe(zip(slug + '.zip'))
+		.pipe(dest('.'));
+}
+
+function cleanup() {
+	return del(slug);
+}
 
 /* CSS */
-gulp.task('css', function(){
-    return gulp.src('assets/css/**/*.less')
-		.pipe(plugins.less())
+function css() {
+	return src(['assets/css/**/*.less'])
+		.pipe(less())
 		.on('error', swallowError)
-        .pipe(plugins.autoprefixer({ browsers: ['last 3 versions'] }))
-        .pipe(plugins.cssnano())
-        .pipe(gulp.dest('assets/css/'));
-});
+		.pipe(postcss())
+		.pipe(dest('assets/css/'));
+}
 
 /* Scripts */
-gulp.task('scripts', function(){
-    return gulp.src(['assets/js/*.js', '!assets/js/*.min.js'])
-        .pipe(plugins.uglify())
-        .pipe(plugins.rename({ suffix: '.min' }))
-        .pipe(gulp.dest('assets/js/'));
-});
+function scripts() {
+	return src(['assets/js/*.js', '!assets/js/*.min.js'])
+		.pipe(uglify())
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(dest('assets/js/'));
+}
 
 /* Default Task */
-gulp.task('default', ['css', 'scripts']);
+exports.deploy = deploy;
+exports.package = series(deploy, archive, cleanup);
 
-/* Watch Task */
-gulp.task('watch', ['css', 'scripts'], function(){
-    gulp.watch(['assets/css/**/*.less'], ['css']);
-    gulp.watch(['assets/js/*.js', '!assets/js/*.min.js'], ['scripts']);
-});
+exports.watch = function() {
+	watch(['assets/css/**/*.less'], { ignoreInitial: false }, css);
+	watch(['assets/js/*.js', '!assets/js/*.min.js'], { ignoreInitial: false }, scripts);
+};
+exports.default = series(css, scripts);
