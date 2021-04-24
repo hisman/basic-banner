@@ -30,6 +30,7 @@ class Basic_Banner_Shortcode {
 	 * Add banner shortcode.
 	 *
 	 * @since  1.1.0
+	 * @since  1.1.3 Fix shortcode errors.
 	 */
 	public function add_shortcode( $atts ) {
 		$atts = shortcode_atts( array(
@@ -41,7 +42,10 @@ class Basic_Banner_Shortcode {
 			return '';
 		}
 
-		return basic_banner_show( $atts['name'], $atts['class'] );
+		ob_start();
+		basic_banner_show( $atts['name'], $atts['class'] );
+		$banner = ob_get_clean();
+		return $banner;
 	}
 
 }
