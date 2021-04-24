@@ -3,7 +3,7 @@ Contributors: hisman
 Donate Link: https://www.paypal.me/hismansaputra
 Tags: banner
 Requires at least: 4.5
-Tested up to: 5.5.3
+Tested up to: 5.7.1
 Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -67,7 +67,8 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 == Changelog ==
 
 = 1.1.3 =
-* Support WordPress 5.5.
+* Support WordPress 5.7.
+* Fix shortcode errors.
 
 = 1.1.2 =
 * Fix undefined property in banner object.
