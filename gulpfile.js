@@ -31,6 +31,7 @@ function deploy() {
 				'!.phpcs.xml.dist',
 				'!.travis.yml',
 				'!phpunit.xml.dist',
+				'!postcss.config.js',
 				'!{' + slug + ',' + slug + '/**}',
 				'!' + slug + '.zip'])
 			.pipe(dest(slug));
