@@ -4,7 +4,9 @@
   "description": "Allows you to create and display banners in WordPress",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "wp-scripts build --webpack-src-dir=src --output-path=build",
+    "start": "wp-scripts start --webpack-src-dir=src --output-path=build",
+    "test": "wp-scripts test-unit-js"
   },
   "repository": {
     "type": "git",
@@ -30,5 +32,8 @@
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "devDependencies": {
+    "@wordpress/scripts": "^27.4.0"
+  }
 }

@@ -3,6 +3,7 @@
  * The Template for displaying banner.
  *
  * @version      1.0.0
+ * @package      Basic_Banner
  */
 
 // If this file is called directly, abort.
@@ -15,7 +16,7 @@ if ( ! $banner ) {
 }
 ?>
 
-<div id="basic-banner-<?php echo $banner->id; ?>" class="basic-banner <?php echo esc_attr( $class ); ?>">
+<div id="basic-banner-<?php echo esc_attr( $banner->id ); ?>" class="basic-banner <?php echo esc_attr( $class ); ?>">
 
 	<?php if ( $banner->url ) : ?>
 
@@ -25,7 +26,7 @@ if ( ! $banner ) {
 
 	<?php else : ?>
 
-		<?php echo get_the_post_thumbnail( $banner->id, 'full', array( 'alt' => esc_attr( $banner->caption ) ) );  ?>
+		<?php echo get_the_post_thumbnail( $banner->id, 'full', array( 'alt' => esc_attr( $banner->caption ) ) ); ?>
 
 	<?php endif ?>
 

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Banner Model Class.
  *
@@ -14,36 +13,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Basic_Banner_Model' ) ) :
 
-class Basic_Banner_Model {
-
 	/**
-	 * Construct banner object.
-	 *
-	 * @since    1.0.0
-	 * @since    1.1.2 Fix undefined property error.
+	 * Class Basic_Banner_Model
 	 */
-	public function __construct( $name ) {
-		$banner_post = get_posts( array(
-			'name' => $name,
-			'post_type' => 'banner',
-			'post_status' => 'publish',
-			'numberposts' => 1,
-		) );
+	class Basic_Banner_Model {
 
+		/**
+		 * Construct banner object.
+		 *
+		 * @since    1.0.0
+		 * @since    1.1.2 Fix undefined property error.
+		 *
+		 * @param string $name Banner name (post slug).
+		 */
+		public function __construct( $name ) {
+			$banner_post = get_posts(
+				array(
+					'name'        => $name,
+					'post_type'   => 'banner',
+					'post_status' => 'publish',
+					'numberposts' => 1,
+				)
+			);
 
-		if ( empty( $banner_post ) ) {
-			$this->error = true;
-		}else {
-			$this->error = false;
-			$this->post = $banner_post[0];
-			$this->id = $this->post->ID;
-			$this->name = $this->post->post_name;
-			$this->title = $this->post->post_title;
-			$this->caption = get_post_meta( $this->post->ID, 'banner_caption', true );
-			$this->url = get_post_meta( $this->post->ID, 'banner_url', true );
+			if ( empty( $banner_post ) ) {
+				$this->error = true;
+			} else {
+				$this->error   = false;
+				$this->post    = $banner_post[0];
+				$this->id      = $this->post->ID;
+				$this->name    = $this->post->post_name;
+				$this->title   = $this->post->post_title;
+				$this->caption = get_post_meta( $this->post->ID, 'banner_caption', true );
+				$this->url     = get_post_meta( $this->post->ID, 'banner_url', true );
+			}
 		}
 	}
-
-}
 
 endif;
