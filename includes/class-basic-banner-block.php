@@ -40,7 +40,7 @@ if ( ! class_exists( 'Basic_Banner_Block' ) ) :
 			}
 
 			register_block_type_from_metadata(
-				plugin_dir_path( __DIR__ ) . 'src/banner',
+				plugin_dir_path( __DIR__ ) . 'assets/build/banner',
 				array(
 					'render_callback' => array( $this, 'render_block' ),
 				)

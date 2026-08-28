@@ -12,7 +12,6 @@ for arg in "$@"; do
 done
 
 npm run build
-npx gulp
 
 rm -rf "$slug" "$slug.zip"
 
@@ -22,12 +21,10 @@ rsync -a ./ "$slug/" \
 	--exclude 'node_modules/' \
 	--exclude 'vendor/' \
 	--exclude 'bin/' \
-	--exclude 'src/' \
 	--exclude 'tests/' \
 	--exclude '.editorconfig' \
 	--exclude '.gitattributes' \
 	--exclude '.gitignore' \
-	--exclude 'gulpfile.js' \
 	--exclude 'package.json' \
 	--exclude 'package-lock.json' \
 	--exclude 'composer.json' \
@@ -38,7 +35,7 @@ rsync -a ./ "$slug/" \
 	--exclude '.phpcs.xml.dist' \
 	--exclude '.travis.yml' \
 	--exclude 'phpunit.xml.dist' \
-	--exclude 'postcss.config.js'
+	--exclude 'webpack.config.js'
 
 if $stage_only; then
 	echo "Staged to ./$slug/ (no zip)."

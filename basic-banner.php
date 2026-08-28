@@ -8,7 +8,7 @@
  * Author URI:        https://hisman.org
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       basic-banner
+ * Text Domain:       basic_banner
  * Domain Path:       /languages
  *
  * @since             1.0.0
@@ -219,7 +219,7 @@ if ( ! class_exists( 'Basic_Banner' ) ) :
 		 * @since  1.0.0
 		 */
 		public function load_plugin_textdomain() {
-			load_plugin_textdomain( 'basic-banner', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( 'basic_banner', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		}
 
 		/**
@@ -292,16 +292,16 @@ if ( ! class_exists( 'Basic_Banner' ) ) :
 		 */
 		public function load_admin_scripts() {
 			$screen    = get_current_screen();
-			$screen_id = $screen ? $screen->id : '';
+			$screen_id = !empty( $screen ) ? $screen->id : '';
 
 			$banner_screens = array(
 				'banner',
 				'edit-banner',
 			);
 
-			wp_register_style( 'basic_banner_admin_styles', $this->plugin_url() . '/assets/css/admin.css', array(), $this->version );
-
 			if ( in_array( $screen_id, $banner_screens, true ) ) {
+				wp_register_style( 'basic_banner_admin_styles', $this->plugin_url() . '/assets/build/admin.css', array(), $this->version );
+				wp_style_add_data( 'basic_banner_admin_styles', 'rtl', 'replace' );
 				wp_enqueue_style( 'basic_banner_admin_styles' );
 			}
 		}

@@ -13,12 +13,12 @@
   ```bash
   vendor/bin/phpcs
   ```
-- Text domain for all internationalized strings: `basic-banner`.
+- Text domain for all internationalized strings: `basic_banner`.
 - Prefix for all global functions, classes, options, and hooks: `basic_banner`.
 
 ## Build & verification
 
-- Block assets live in `src/banner/` and are compiled to `build/` via `@wordpress/scripts`:
+- Frontend assets live in `assets/src/` (block in `assets/src/banner/`, admin styles in `assets/src/admin.scss`) and are compiled to `assets/build/` via `@wordpress/scripts`:
   ```bash
   npm run build
   ```
