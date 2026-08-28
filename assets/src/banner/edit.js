@@ -3,9 +3,9 @@
  */
 import {
 	InspectorControls,
-	ServerSideRender,
 	useBlockProps,
 } from '@wordpress/block-editor';
+import ServerSideRender from '@wordpress/server-side-render';
 import {
 	ComboboxControl,
 	PanelBody,
