@@ -1,27 +1,42 @@
 <?php
 /**
- * Class Test_Basic_banner
+ * Class Test_Basic_Banner
  *
  * @package Basic_Banner
  */
 
-class Test_Basic_banner extends WP_UnitTestCase {
+/**
+ * Class Test_Basic_Banner
+ */
+class Test_Basic_Banner extends WP_UnitTestCase {
 
-	public function setUp() {
-        parent::setUp();
+	/**
+	 * Basic Banner instance.
+	 *
+	 * @var Basic_Banner
+	 */
+	public $basic_banner;
 
-        $post_id = $this->factory->post->create( array(
-			'post_name' => 'test',
-			'post_title' => 'Test',
-			'post_type' => 'banner',
-			'post_status' => 'publish',
-		) );
+	/**
+	 * Set up the test.
+	 */
+	public function setUp(): void {
+		parent::setUp();
+
+		$post_id = $this->factory->post->create(
+			array(
+				'post_name'   => 'test',
+				'post_title'  => 'Test',
+				'post_type'   => 'banner',
+				'post_status' => 'publish',
+			)
+		);
 
 		update_post_meta( $post_id, 'banner_url', '#' );
 		update_post_meta( $post_id, 'banner_caption', 'Caption' );
 
 		$this->basic_banner = new Basic_Banner();
-    }
+	}
 
 	/**
 	 * Test basic_banner_get() function.
@@ -59,12 +74,14 @@ class Test_Basic_banner extends WP_UnitTestCase {
 	 * Test Basic_Banner::admin_post_thumbnail_size() for other post type.
 	 */
 	public function test_admin_post_thumbnail_size_other_post_type() {
-		$post_id = $this->factory->post->create( array(
-			'post_name' => 'test-post',
-			'post_title' => 'Test Post',
-			'post_type' => 'post',
-			'post_status' => 'publish',
-		) );
+		$post_id = $this->factory->post->create(
+			array(
+				'post_name'   => 'test-post',
+				'post_title'  => 'Test Post',
+				'post_type'   => 'post',
+				'post_status' => 'publish',
+			)
+		);
 
 		$post = get_post( $post_id );
 
@@ -72,5 +89,4 @@ class Test_Basic_banner extends WP_UnitTestCase {
 
 		$this->assertEquals( 'small', $size );
 	}
-
 }

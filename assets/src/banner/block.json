@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "basic-banner/banner",
+	"title": "Basic Banner",
+	"category": "widgets",
+	"description": "Display a banner created with the Basic Banner plugin.",
+	"textdomain": "basic_banner",
+	"attributes": {
+		"name": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"align": true,
+		"customClassName": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

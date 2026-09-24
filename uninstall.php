@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Basic_Banner Uninstall.
  *

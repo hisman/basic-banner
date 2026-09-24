@@ -15,6 +15,12 @@ Thumbs.db
 
 # NPM
 /node_modules
+package-lock.json
+
+# Composer
+/vendor
+
+# Build output
+/assets/build
 /basic-banner
 basic-banner.zip
-package-lock.json

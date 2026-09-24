@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Banner Shortcode Class.
  *
@@ -14,41 +13,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Basic_Banner_Shortcode' ) ) :
 
-class Basic_Banner_Shortcode {
-
 	/**
-	 * Construct banner shortcode.
-	 *
-	 * @since  1.1.0
+	 * Class Basic_Banner_Shortcode
 	 */
-	public function __construct() {
-		add_shortcode( 'basicbanner', array( $this, 'add_shortcode' ) );
+	class Basic_Banner_Shortcode {
 
-	}
-
-	/**
-	 * Add banner shortcode.
-	 *
-	 * @since  1.1.0
-	 * @since  1.1.3 Fix shortcode errors.
-	 */
-	public function add_shortcode( $atts ) {
-		$atts = shortcode_atts( array(
-			'name' => '',
-			'class' => '',
-		), $atts );
-
-		if ( $atts['name'] == '' ) {
-			return '';
+		/**
+		 * Construct banner shortcode.
+		 *
+		 * @since  1.1.0
+		 */
+		public function __construct() {
+			add_shortcode( 'basicbanner', array( $this, 'add_shortcode' ) );
 		}
 
-		ob_start();
-		basic_banner_show( $atts['name'], $atts['class'] );
-		$banner = ob_get_clean();
-		return $banner;
-	}
+		/**
+		 * Add banner shortcode.
+		 *
+		 * @since  1.1.0
+		 * @since  1.1.3 Fix shortcode errors.
+		 * @param array $atts Shortcode attributes.
+		 * @return string
+		 */
+		public function add_shortcode( $atts ) {
+			$atts = shortcode_atts(
+				array(
+					'name'  => '',
+					'class' => '',
+				),
+				$atts
+			);
 
-}
+			if ( '' === $atts['name'] ) {
+				return '';
+			}
+
+			ob_start();
+			basic_banner_show( $atts['name'], $atts['class'] );
+			$banner = ob_get_clean();
+			return $banner;
+		}
+	}
 
 endif;
 
