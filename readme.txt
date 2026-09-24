@@ -3,8 +3,8 @@ Contributors: hisman
 Donate Link: https://www.paypal.me/hismansaputra
 Tags: banner
 Requires at least: 4.5
-Tested up to: 5.7.1
-Stable tag: 1.1.3
+Tested up to: 7.1.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Basic Banner is a plugin that allows you to create and display banners in WordPr
 
 = Displaying the Banner =
 
-You can display the banners by using basic banner widget. There is also a shortcode :
+You can display the banners by using basic banner block. There is also a shortcode :
 
 `[basicbanner name="" class=""]`
 
@@ -65,6 +65,11 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 1. Create a new banner
 
 == Changelog ==
+
+= 1.2.0 =
+* Add a block for displaying banners in the block editor.
+* Add frontend styles for banners.
+* Support WordPress 7.1.2.
 
 = 1.1.3 =
 * Support WordPress 5.7.
