@@ -60,12 +60,17 @@ function basic_banner_get( $name ) {
  *
  * @since    1.0.0
  * @since    1.1.0 Custom html classes for banner container.
+ * @since    1.2.0 Enqueue frontend styles.
  *
  * @param string $name  Banner name (post slug).
  * @param string $class Custom HTML class.
  */
 function basic_banner_show( $name, $class = '' ) {
 	$banner = basic_banner_get( $name );
+
+	if ( ! is_admin() ) {
+		wp_enqueue_style( 'basic_banner_styles' );
+	}
 
 	basic_banner_get_template(
 		'banner.php',

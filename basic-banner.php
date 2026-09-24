@@ -83,6 +83,8 @@ if ( ! class_exists( 'Basic_Banner' ) ) :
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_scripts' ) );
 
+			add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_styles' ) );
+
 			add_action( 'widgets_init', array( $this, 'register_widget' ) );
 
 			add_filter( 'admin_post_thumbnail_size', array( $this, 'admin_post_thumbnail_size' ), 10, 3 );
@@ -304,6 +306,19 @@ if ( ! class_exists( 'Basic_Banner' ) ) :
 				wp_style_add_data( 'basic_banner_admin_styles', 'rtl', 'replace' );
 				wp_enqueue_style( 'basic_banner_admin_styles' );
 			}
+		}
+
+		/**
+		 * Register frontend banner styles.
+		 *
+		 * Registered here but enqueued on demand from basic_banner_show(), so the
+		 * stylesheet loads for every banner output path (block, shortcode, widget).
+		 *
+		 * @since 1.2.0
+		 */
+		public function register_frontend_styles() {
+			wp_register_style( 'basic_banner_styles', $this->plugin_url() . '/assets/build/style.css', array(), $this->version );
+			wp_style_add_data( 'basic_banner_styles', 'rtl', 'replace' );
 		}
 
 		/**

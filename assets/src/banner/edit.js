@@ -83,14 +83,6 @@ export default function Edit( { attributes, setAttributes } ) {
 							setAttributes( { name: value } )
 						}
 					/>
-
-					<TextControl
-						label={ __( 'Additional CSS class', 'basic_banner' ) }
-						value={ attributes.class }
-						onChange={ ( value ) =>
-							setAttributes( { class: value } )
-						}
-					/>
 				</PanelBody>
 			</InspectorControls>
 		</div>

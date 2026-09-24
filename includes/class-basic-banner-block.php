@@ -60,7 +60,6 @@ if ( ! class_exists( 'Basic_Banner_Block' ) ) :
 				$attributes,
 				array(
 					'name'      => '',
-					'class'     => '',
 					'className' => '',
 					'align'     => '',
 				)
@@ -71,7 +70,7 @@ if ( ! class_exists( 'Basic_Banner_Block' ) ) :
 			}
 
 			// Merge custom class, editor-added class, and alignment into one class list.
-			$classes = array_filter( array( $attributes['class'], $attributes['className'], $attributes['align'] ? 'align' . $attributes['align'] : '' ) );
+			$classes = array_filter( array( $attributes['className'], $attributes['align'] ? 'align' . $attributes['align'] : '' ) );
 
 			ob_start();
 			basic_banner_show( $attributes['name'], trim( implode( ' ', $classes ) ) );

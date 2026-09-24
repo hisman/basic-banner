@@ -1,3 +1,14 @@
+.basic-banner {
+	a, img {
+		display: block;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
 .wp-block-basic-banner-banner {
 	.components-placeholder {
 		margin-bottom: 1rem;
